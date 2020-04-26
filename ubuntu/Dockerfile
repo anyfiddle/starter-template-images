@@ -23,10 +23,10 @@ RUN adduser --gecos '' --disabled-password anyfiddle && \
 	echo "anyfiddle ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/nopasswd
 
 RUN curl -SsL https://github.com/boxboat/fixuid/releases/download/v0.4/fixuid-0.4-linux-amd64.tar.gz | tar -C /usr/local/bin -xzf - && \
-    chown root:root /usr/local/bin/fixuid && \
-    chmod 4755 /usr/local/bin/fixuid && \
-    mkdir -p /etc/fixuid && \
-    printf "user: anyfiddle\ngroup: anyfiddle\n" > /etc/fixuid/config.yml
+  chown root:root /usr/local/bin/fixuid && \
+  chmod 4755 /usr/local/bin/fixuid && \
+  mkdir -p /etc/fixuid && \
+  printf "user: anyfiddle\ngroup: anyfiddle\n" > /etc/fixuid/config.yml
 
 USER anyfiddle
 

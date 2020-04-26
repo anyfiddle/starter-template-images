@@ -1,6 +1,5 @@
 {
-    "id": "ubuntu",
-    "name": "Ubuntu",
-    "description": "Ubuntu image with basic tools like git, curl, vim, htop etc",
-    "thumbnail": "./thumbnail.png"
+  "id": "nodejs",
+  "name": "NodeJS",
+  "description": "NodeJS version 12.x with npm and yarn"
 }
