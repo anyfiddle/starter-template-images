@@ -12,5 +12,5 @@ for thumbnail in $templateThumbnails
 do
   gcsThumbnailFilename=${thumbnail/\/thumbnail.png/.png}
   echo "Uploading ${thumbnail} => $gcsThumbnailFilename"
-  gsutil cp "$json" "gs://anyfiddle-starter-templates/thumbnails/${gcsThumbnailFilename}"
+  gsutil cp "$thumbnail" "gs://anyfiddle-starter-templates/thumbnails/${gcsThumbnailFilename}"
 done
