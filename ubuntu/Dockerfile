@@ -39,4 +39,5 @@ RUN mkdir -p /home/anyfiddle/project
 WORKDIR /home/anyfiddle/project
 ENV WORKSPACE_DIR=/home/anyfiddle/project
 
-ENTRYPOINT ["dumb-init", "fixuid", "-q", "bash"]
+ENTRYPOINT ["dumb-init", "fixuid", "-q"]
+CMD ["bash"]
