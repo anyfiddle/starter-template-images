@@ -36,17 +36,3 @@ jobs:
         path: ./${{ matrix.template }}
         tag_with_ref: true
 
-  upload-templates-assets:
-    name: Upload template assets
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
-    - name: Copy assets and configs
-      run: ./copy-assets.sh
