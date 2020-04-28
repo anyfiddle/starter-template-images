@@ -1,5 +1,15 @@
 {
   "id": "ubuntu",
   "name": "Ubuntu",
-  "description": "Ubuntu image with basic tools like git, curl, vim, htop etc"
+  "description": "Ubuntu image with basic tools like git, curl, vim, htop etc",
+  "tags": [
+    "ubuntu",
+    "linux",
+    "htop",
+    "vim",
+    "terminal",
+    "unix",
+    "curl",
+    "git"
+  ]
 }
