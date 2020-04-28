@@ -1,0 +1,9 @@
+{
+  "id": "python3",
+  "name": "Python 3",
+  "description": "Python 3 with pip",
+  "tags": [
+    "python3",
+    "pip3"
+  ]
+}
