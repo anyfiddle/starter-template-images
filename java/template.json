@@ -1,0 +1,11 @@
+{
+  "id": "java",
+  "name": "Java",
+  "description": "Java with OpenJDK and JRE",
+  "tags": [
+    "java",
+    "javac",
+    "jre",
+    "jdk"
+  ]
+}
