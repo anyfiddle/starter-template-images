@@ -1,5 +1,6 @@
 {
   "openFiles": [
       "HelloWorld.java"
-  ]
+  ],
+  "defaultCommand": "javac HelloWorld.java && java HelloWorld"
 }

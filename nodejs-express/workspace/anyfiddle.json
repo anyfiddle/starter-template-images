@@ -2,5 +2,6 @@
   "openFiles": [
       "index.js"
   ],
+  "defaultCommand": "npm start",
   "port": 3000
 }

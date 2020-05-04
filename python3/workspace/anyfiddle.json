@@ -1,5 +1,6 @@
 {
   "openFiles": [
       "main.py"
-  ]
+  ],
+  "defaultCommand": "python main.py"
 }
