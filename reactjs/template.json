@@ -1,11 +1,12 @@
 {
-  "id": "react",
-  "name": "React",
+  "id": "reactjs",
+  "name": "ReactJS",
   "description": "React bootstrapped using create react app and nodejs version 12.x with npm and yarn",
   "tags": [
     "nodejs",
     "npm",
     "yarn",
+    "reactjs",
     "react"
   ]
 }
