@@ -1,16 +1,19 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y \
-	openssl \
-	net-tools \
-	git \
-	locales \
-	sudo \
-	dumb-init \
-	vim \
 	curl \
-	wget \
+	dumb-init \
+	git \
 	htop \
+	less \
+	locales \
+	nano \
+	net-tools \
+	openssl \
+	sudo \
+	tmux \
+	vim \
+	wget \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen en_US.UTF-8
@@ -27,6 +30,8 @@ RUN curl -SsL https://github.com/boxboat/fixuid/releases/download/v0.4/fixuid-0.
   chmod 4755 /usr/local/bin/fixuid && \
   mkdir -p /etc/fixuid && \
   printf "user: anyfiddle\ngroup: anyfiddle\n" > /etc/fixuid/config.yml
+
+COPY ./tmux.conf /etc/tmux.conf
 
 USER anyfiddle
 
