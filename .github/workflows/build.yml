@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-base:
-    name: Base image build
+    name: Base OS Image build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -29,7 +29,8 @@ jobs:
           'nodejs',
           'nodejs-express',
           'python',
-          'python3'
+          'python3',
+          'golang'
         ]
     steps:
     - uses: actions/checkout@v2
@@ -42,7 +43,7 @@ jobs:
         path: ./${{ matrix.template }}
         tag_with_ref: true
   build-next:
-    name: thrid level
+    name: Third level
     needs: build
     runs-on: ubuntu-latest
     strategy:

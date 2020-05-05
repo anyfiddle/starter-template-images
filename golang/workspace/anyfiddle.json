@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "main.go"
+  ],
+  "defaultCommand": "go run main.go"
+}
