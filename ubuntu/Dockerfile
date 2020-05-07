@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y \
 	net-tools \
 	openssl \
 	sudo \
-	tmux \
 	vim \
 	wget \
 	&& rm -rf /var/lib/apt/lists/*
