@@ -16,21 +16,21 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: anyfiddle/ubuntu
-        path: ./ubuntu 
+        path: ./_base_images/base
         tag_with_ref: true
+
   build:
-    name: Other Images
+    name: Build Base images for languages
     needs: build-base
     runs-on: ubuntu-latest
     strategy:
       matrix:
         template: [
-          'java',
-          'nodejs',
-          'nodejs-express',
-          'python',
-          'python3',
-          'golang'
+          'base-golang',
+          'base-java',
+          'base-nodejs',
+          'base-python',
+          'base-python3'
         ]
     steps:
     - uses: actions/checkout@v2
@@ -40,16 +40,24 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: anyfiddle/${{ matrix.template }}
-        path: ./${{ matrix.template }}
+        path: ./_base_images/${{ matrix.template }}
         tag_with_ref: true
-  build-next:
-    name: Third level
+  
+  build-starter-template-images:
+    name: Build the actual starter templates
     needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
         template: [
-          'reactjs'
+          'golang',
+          'java',
+          'nodejs',
+          'nodejs-express',
+          'python',
+          'python3',
+          'reactjs',
+          'ubuntu'
         ]
     steps:
     - uses: actions/checkout@v2
