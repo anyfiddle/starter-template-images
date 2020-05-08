@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+    "hello_world.ex"
+  ],
+  "defaultCommand": "iex hello_world.ex"
+}
