@@ -26,6 +26,7 @@ jobs:
     strategy:
       matrix:
         template: [
+          'base-elixir',
           'base-golang',
           'base-java',
           'base-nodejs',
@@ -50,6 +51,7 @@ jobs:
     strategy:
       matrix:
         template: [
+          'elixir',
           'golang',
           'java',
           'nodejs',
