@@ -1,9 +1,10 @@
 {
   "id": "elixir",
   "name": "Elixir",
-  "description": "Elixir is a dynamic, functional language designed for building scalable and maintainable applications. ",
+  "description": "Elixir version 1.10.3 with Erlang/OTP platform",
   "tags": [
     "elixir",
-    "elixir-lang"
+    "elixir-lang",
+    "erlang"
   ]
 }
