@@ -1,6 +1,6 @@
 {
   "openFiles": [
-    "hello_world.ex"
+    "main.exs"
   ],
-  "defaultCommand": "iex hello_world.ex"
+  "defaultCommand": "elixir main.exs"
 }
