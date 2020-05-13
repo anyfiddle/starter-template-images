@@ -1,0 +1,10 @@
+{
+  "id": "deno",
+  "name": "Deno",
+  "description": "Deno 1.0.0-rc3 with Typescript",
+  "tags": [
+    "deno",
+    "typescript",
+    "v8"
+  ]
+}

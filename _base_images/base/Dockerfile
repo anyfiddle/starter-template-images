@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
 	openssl \
 	software-properties-common \
 	sudo \
+	unzip \
 	vim \
 	wget \
 	&& rm -rf /var/lib/apt/lists/*
