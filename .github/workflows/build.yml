@@ -18,7 +18,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: anyfiddle/base
         path: ./_base_images/base
-        tag_with_ref: true
+        tags: latest
 
   build:
     name: Base
@@ -44,7 +44,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: anyfiddle/${{ matrix.template }}
         path: ./_base_images/${{ matrix.template }}
-        tag_with_ref: true
+        tags: latest
   
   build-starter-template-images:
     name: Templates
@@ -73,5 +73,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: anyfiddle/${{ matrix.template }}
         path: ./${{ matrix.template }}
-        tag_with_ref: true
-
+        tags: latest
