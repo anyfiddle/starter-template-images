@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-base:
-    name: Base OS Image build
+    name: Base OS
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -21,12 +21,13 @@ jobs:
         tag_with_ref: true
 
   build:
-    name: Build Base images for languages
+    name: Base
     needs: build-base
     runs-on: ubuntu-latest
     strategy:
       matrix:
         template: [
+          'base-deno',
           'base-elixir',
           'base-golang',
           'base-java',
@@ -46,12 +47,13 @@ jobs:
         tag_with_ref: true
   
   build-starter-template-images:
-    name: Build the actual starter templates
+    name: Templates
     needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
         template: [
+          'deno',
           'elixir',
           'golang',
           'java',
