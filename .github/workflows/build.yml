@@ -2,6 +2,8 @@ name: Build
 
 on:
   push:
+    branches:
+      - master
     tags:
       - '*'
 
@@ -66,6 +68,7 @@ jobs:
         ]
     steps:
     - uses: actions/checkout@v2
+    
     - name: Build images
       uses: docker/build-push-action@v1
       with:
@@ -73,4 +76,39 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: anyfiddle/${{ matrix.template }}
         path: ./${{ matrix.template }}
-        tags: latest
+        tags: dev
+        tag_with_ref: true
+   
+    - name: Setup google cloud for gcs
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+  
+    - name: Upload thumbnail
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        src="${{ matrix.template }}/thumbnail.png"
+        dest="gs://anyfiddle-templates-thumbnails/${{ matrix.template }}.png"
+        gsutil cp "$src" "${dest}"
+
+    - name: Webhook to update image in templates
+      if: startsWith(github.ref, 'refs/tags/')
+      shell: bash
+      env:
+        HOOK_SECRET: ${{ secrets.HOOK_SECRET }}
+      run: |
+        version="${GITHUB_REF/refs\/tags\//}"
+        image=anyfiddle/${{ matrix.template }}:$version
+        thumbnail="https://storage.googleapis.com/anyfiddle-templates-thumbnails/${{ matrix.template }}.png?v=$version"
+        jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" starter-template-images/${{ matrix.template }}/template.json`
+
+        hookUrl="https://_dev_www.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
+
+        signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "$HOOK_SECRET" | sed 's/^.* //'`
+        curl --location --request POST "${hookUrl}" \
+          --header "x-hook-signature: $signature" \
+          --header 'Content-Type: application/json' \
+          --data-raw "$jsonToPost"
