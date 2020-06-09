@@ -2,5 +2,5 @@
   "openFiles": [
       "index.ts"
   ],
-  "defaultCommand": "deno run index.js"
+  "defaultCommand": "deno run index.ts"
 }
