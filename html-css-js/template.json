@@ -1,0 +1,12 @@
+{
+  "id": "html-css-js",
+  "name": "HTML, CSS and JS",
+  "description": "Vanilla HTML, CSS and JS running in a static server (serve npm package)",
+  "tags": [
+    "html",
+    "js",
+    "css",
+    "nodejs",
+    "npm"
+  ]
+}
