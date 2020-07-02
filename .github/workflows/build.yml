@@ -58,6 +58,7 @@ jobs:
           'deno',
           'elixir',
           'golang',
+          'html-css-js',
           'java',
           'nodejs',
           'nodejs-express',
