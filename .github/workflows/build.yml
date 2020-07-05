@@ -79,21 +79,20 @@ jobs:
         path: ./${{ matrix.template }}
         tags: dev
         tag_with_ref: true
-   
-    - name: Setup google cloud for gcs
-      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+
+    - name: Setup AWS for S3
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_email: ${{ secrets.GCP_SA_EMAIL }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
-  
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+   
     - name: Upload thumbnail
       if: startsWith(github.ref, 'refs/tags/')
       run: |
         src="${{ matrix.template }}/thumbnail.png"
-        dest="gs://anyfiddle-com-templates-thumbnails/${{ matrix.template }}.png"
-        gsutil cp "$src" "${dest}"
+        dest="s3://anyfiddle-templates-thumbnails/${{ matrix.template }}.png"
+        aws s3 cp "$src" "${dest}"
 
     - name: Webhook to update image in templates
       if: startsWith(github.ref, 'refs/tags/')
