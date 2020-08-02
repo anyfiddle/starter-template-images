@@ -1,0 +1,12 @@
+{
+  "id": "lumen",
+  "name": "Lumen",
+  "description": "Lumen micro framework for PHP 7.2 with composer",
+  "tags": [
+    "lumen",
+    "lumen php",
+    "lumen framework",
+    "php",
+    "composer"
+  ]
+}
