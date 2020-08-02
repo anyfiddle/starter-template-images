@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "app.py"
+  ],
+  "defaultCommand": "python3 app.py"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "webpy",
+  "name": "web.py",
+  "description": "web.py microframework with Python 3",
+  "tags": [
+    "webpy",
+    "web.py",
+    "python",
+    "pip",
+    "server"
+  ]
+}
