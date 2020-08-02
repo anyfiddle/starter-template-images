@@ -70,6 +70,7 @@ jobs:
           'python3',
           'reactjs',
           'ruby',
+          'slimphp',
           'ubuntu',
           'webpy'
         ]

@@ -1,0 +1,12 @@
+{
+  "id": "slimphp",
+  "name": "Slim PHP",
+  "description": "Slim framework for PHP 7.2 with composer",
+  "tags": [
+    "slim",
+    "slimphp",
+    "slim framework",
+    "php",
+    "composer"
+  ]
+}

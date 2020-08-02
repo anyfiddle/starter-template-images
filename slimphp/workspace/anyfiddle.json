@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "public/app.php"
+  ],
+  "defaultCommand": "php -S 0.0.0.0:8080 -t public"
+}
