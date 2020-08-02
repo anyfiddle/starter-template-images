@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "index.js"
+  ],
+  "defaultCommand": "node index.js"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "puppeteer",
+  "name": "Puppeteer",
+  "description": "Puppeteer with NodeJS",
+  "tags": [
+    "puppeteer",
+    "scraping",
+    "tests",
+    "nodejs",
+    "npm",
+    "yarn"
+  ]
+}

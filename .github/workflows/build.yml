@@ -62,6 +62,7 @@ jobs:
           'java',
           'nodejs',
           'nodejs-express',
+          'puppeteer',
           'python',
           'python3',
           'reactjs',
