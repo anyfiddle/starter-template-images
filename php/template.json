@@ -1,0 +1,9 @@
+{
+  "id": "php",
+  "name": "PHP",
+  "description": "PHP 7.2 with composer",
+  "tags": [
+    "php",
+    "composer"
+  ]
+}
