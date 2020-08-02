@@ -35,7 +35,8 @@ jobs:
           'base-java',
           'base-nodejs',
           'base-python',
-          'base-python3'
+          'base-python3',
+          'base-ruby'
         ]
     steps:
     - uses: actions/checkout@v2
@@ -66,6 +67,7 @@ jobs:
           'python',
           'python3',
           'reactjs',
+          'ruby',
           'ubuntu',
           'webpy'
         ]

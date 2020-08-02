@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "main.rb"
+  ],
+  "defaultCommand": "ruby main.rb"
+}
