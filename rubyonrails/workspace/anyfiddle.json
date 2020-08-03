@@ -1,0 +1,7 @@
+{
+  "openFiles": [
+      "config/routes.rb",
+      "app/views/layouts/application.html.erb"
+  ],
+  "defaultCommand": "rails server -b 0.0.0.0"
+}

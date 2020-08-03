@@ -73,6 +73,7 @@ jobs:
           'python3',
           'reactjs',
           'ruby',
+          'rubyonrails',
           'slimphp',
           'spring',
           'ubuntu',
