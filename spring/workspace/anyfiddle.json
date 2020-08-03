@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "src/main/java/com/anyfiddle/main/MainApplication.java"
+  ],
+  "defaultCommand": "./mvnw spring-boot:run"
+}

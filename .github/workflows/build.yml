@@ -74,6 +74,7 @@ jobs:
           'reactjs',
           'ruby',
           'slimphp',
+          'spring',
           'ubuntu',
           'vuejs',
           'webpy'

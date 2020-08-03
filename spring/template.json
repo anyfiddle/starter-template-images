@@ -1,0 +1,13 @@
+{
+  "id": "spring",
+  "name": "Spring",
+  "description": "Spring boot app with Java OpenJDK and JRE",
+  "tags": [
+    "spring",
+    "springboot",
+    "java",
+    "javac",
+    "jre",
+    "jdk"
+  ]
+}
