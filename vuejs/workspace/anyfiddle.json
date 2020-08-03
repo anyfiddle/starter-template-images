@@ -3,6 +3,6 @@
       "src/components/HelloWorld.vue",
       "src/App.vue"
   ],
-  "port": 8080,
-  "defaultCommand": "yarn serve"
+  "defaultCommand": "yarn serve",
+  "port": 8080
 }

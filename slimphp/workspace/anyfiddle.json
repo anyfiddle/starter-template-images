@@ -2,5 +2,6 @@
   "openFiles": [
       "public/app.php"
   ],
-  "defaultCommand": "php -S 0.0.0.0:8080 -t public"
+  "defaultCommand": "php -S 0.0.0.0:8080 -t public",
+  "port": 8080
 }

@@ -3,6 +3,7 @@
   "name": "Ruby",
   "description": "Ruby 2.5.1",
   "tags": [
-    "ruby"
+    "ruby",
+    "gem"
   ]
 }

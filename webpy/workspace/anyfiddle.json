@@ -2,5 +2,6 @@
   "openFiles": [
       "app.py"
   ],
-  "defaultCommand": "python3 app.py"
+  "defaultCommand": "python3 app.py",
+  "port": 8080
 }
