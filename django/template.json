@@ -1,0 +1,10 @@
+{
+  "id": "django",
+  "name": "Django",
+  "description": "Django with Python 3 and pip3",
+  "tags": [
+    "django",
+    "python3",
+    "pip3"
+  ]
+}

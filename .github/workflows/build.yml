@@ -59,6 +59,7 @@ jobs:
         template: [
           'angular',
           'deno',
+          'django',
           'elixir',
           'golang',
           'html-css-js',
