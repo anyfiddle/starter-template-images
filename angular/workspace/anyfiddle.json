@@ -1,0 +1,9 @@
+{
+  "openFiles": [
+      "src/app/app.component.ts",
+      "src/app/app.component.html",
+      "src/app/app.component.css"
+  ],
+  "port": 4200,
+  "defaultCommand": "ng serve --host 0.0.0.0"
+}

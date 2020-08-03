@@ -57,6 +57,7 @@ jobs:
     strategy:
       matrix:
         template: [
+          'angular',
           'deno',
           'elixir',
           'golang',
