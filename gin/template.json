@@ -1,0 +1,12 @@
+{
+  "id": "gin",
+  "name": "Gin",
+  "description": "Gin web framwork",
+  "tags": [
+    "gin",
+    "gin gonic",
+    "gin-gonic",
+    "go",
+    "golang"
+  ]
+}

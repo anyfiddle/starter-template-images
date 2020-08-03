@@ -61,6 +61,7 @@ jobs:
           'deno',
           'django',
           'elixir',
+          'gin',
           'golang',
           'html-css-js',
           'java',
