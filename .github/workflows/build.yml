@@ -74,6 +74,7 @@ jobs:
           'ruby',
           'slimphp',
           'ubuntu',
+          'vuejs',
           'webpy'
         ]
     steps:

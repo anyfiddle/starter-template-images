@@ -1,0 +1,12 @@
+{
+  "id": "vuejs",
+  "name": "VueJS",
+  "description": "VueJS bootstrapped using vue cli and nodejs version 14.x with npm and yarn",
+  "tags": [
+    "nodejs",
+    "npm",
+    "yarn",
+    "vue",
+    "vuejs"
+  ]
+}
