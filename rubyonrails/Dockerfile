@@ -22,5 +22,7 @@ RUN apt-get update && apt-get install -y \
 RUN gem install rails
 USER anyfiddle
 
-COPY --chown=anyfiddle ./workspace /home/anyfiddle/project
 RUN rails new .
+
+COPY --chown=anyfiddle ./workspace/anyfiddle.json /home/anyfiddle/project/anyfiddle.json
+COPY --chown=anyfiddle ./workspace/config/environments/development.rb /home/anyfiddle/project/config/environments/development.rb
