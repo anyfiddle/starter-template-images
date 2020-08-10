@@ -4,6 +4,6 @@
       "src/app/app.component.html",
       "src/app/app.component.css"
   ],
-  "defaultCommand": "ng serve --host 0.0.0.0 --disableHostCheck",
+  "defaultCommand": "ng serve --host 0.0.0.0 --allowedHosts .anyfiddle.run",
   "port": 4200
 }
