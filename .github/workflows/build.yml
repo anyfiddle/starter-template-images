@@ -120,7 +120,7 @@ jobs:
         thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
         jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
 
-        hookUrl="https://dev-www.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
+        hookUrl="https://www.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
 
         signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "$HOOK_SECRET" | sed 's/^.* //'`
         curl --location --request POST "${hookUrl}" \
