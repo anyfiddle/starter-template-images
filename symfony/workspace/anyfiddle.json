@@ -1,7 +1,7 @@
 {
   "openFiles": [
-	"src/Controller/DefaultController.php",
-	"config/routes.yaml"
+    "config/routes.yaml",
+	  "src/Controller/DefaultController.php"
   ],
   "defaultCommand": "symfony server:start --no-tls",
   "port": 8000

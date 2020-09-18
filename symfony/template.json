@@ -1,7 +1,7 @@
 {
   "id": "symfony",
   "name": "Symfony",
-  "description": "Symfony framework for PHP 7.2 with composer",
+  "description": "Symfony framework for PHP with composer",
   "tags": [
     "symfony",
     "symfony php",
