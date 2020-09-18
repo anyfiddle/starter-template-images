@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "Program.cs"
+  ],
+  "defaultCommand": "dotnet run"
+}
