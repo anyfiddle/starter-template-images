@@ -1,8 +1,11 @@
 FROM anyfiddle/base
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 USER root
-RUN wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb
-RUN dpkg -i erlang-solutions_2.0_all.deb
+RUN wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && \
+	dpkg -i erlang-solutions_2.0_all.deb && \
+	rm erlang-solutions_2.0_all.deb
 
 RUN apt-get update && apt-get install -y \
     elixir \
