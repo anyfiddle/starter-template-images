@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "main.cc"
+  ],
+  "defaultCommand": "g++ -o main main.cc && ./main"
+}
