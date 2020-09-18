@@ -60,7 +60,7 @@ jobs:
       matrix:
         template: [
           'angular',
-          'c',
+          'clang',
           'cpp',
           'csharp',
           'deno',
