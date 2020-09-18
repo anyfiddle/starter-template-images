@@ -1,0 +1,9 @@
+{
+  "id": "c",
+  "name": "C",
+  "description": "C with gcc",
+  "tags": [
+    "c",
+    "gcc"
+  ]
+}
