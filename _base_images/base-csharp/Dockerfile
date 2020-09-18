@@ -3,7 +3,7 @@ FROM anyfiddle/base
 USER root
 
 RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
-    sudo dpkg -i packages-microsoft-prod.deb && \
+    dpkg -i packages-microsoft-prod.deb && \
     rm packages-microsoft-prod.deb
 
 RUN apt-get update && apt-get install -y \
