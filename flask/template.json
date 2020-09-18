@@ -1,0 +1,11 @@
+{
+  "id": "flask",
+  "name": "Flask",
+  "description": "Flask microframework with Python 3",
+  "tags": [
+    "flask",
+    "python",
+    "pip",
+    "server"
+  ]
+}
