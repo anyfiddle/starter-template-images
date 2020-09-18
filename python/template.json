@@ -1,9 +1,0 @@
-{
-  "id": "python",
-  "name": "Python",
-  "description": "Python 2.7 with pip",
-  "tags": [
-    "python",
-    "pip"
-  ]
-}
