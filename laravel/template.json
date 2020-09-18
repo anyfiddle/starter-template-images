@@ -1,7 +1,7 @@
 {
   "id": "laravel",
   "name": "Laravel",
-  "description": "Laravel framework for PHP 7.2 with composer",
+  "description": "Laravel framework for PHP with composer",
   "tags": [
     "laravel",
     "laravel php",
