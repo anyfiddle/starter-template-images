@@ -1,0 +1,6 @@
+{
+  "openFiles": [
+      "src/main.rs"
+  ],
+  "defaultCommand": "cargo run"
+}

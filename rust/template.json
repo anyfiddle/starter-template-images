@@ -1,0 +1,9 @@
+{
+  "id": "rust",
+  "name": "Rust",
+  "description": "Rust with cargo",
+  "tags": [
+    "rust",
+    "cargo"
+  ]
+}
