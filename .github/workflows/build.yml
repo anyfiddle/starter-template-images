@@ -29,15 +29,17 @@ jobs:
     strategy:
       matrix:
         template: [
+          'base-csharp',
           'base-deno',
           'base-elixir',
           'base-golang',
           'base-java',
           'base-nodejs',
           'base-php',
-          'base-python',
+          'base-python2',
           'base-python3',
-          'base-ruby'
+          'base-ruby',
+          'base-rust'
         ]
     steps:
     - uses: actions/checkout@v2
@@ -58,9 +60,13 @@ jobs:
       matrix:
         template: [
           'angular',
+          'c',
+          'cpp',
+          'csharp',
           'deno',
           'django',
           'elixir',
+          'flask',
           'gin',
           'golang',
           'html-css-js',
@@ -69,15 +75,17 @@ jobs:
           'lumen',
           'nodejs',
           'nodejs-express',
-          'puppeteer',
           'php',
-          'python',
+          'puppeteer',
+          'python2',
           'python3',
           'reactjs',
           'ruby',
           'rubyonrails',
+          'rust',
           'slimphp',
           'spring',
+          'symfony',
           'ubuntu',
           'vuejs',
           'webpy'
