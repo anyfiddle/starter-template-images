@@ -15,7 +15,10 @@ const puppeteer = require('puppeteer');
   });
   const page = await browser.newPage();
   await page.goto('https://example.com');
-  await page.screenshot({path: 'example.png'});
+
+  const outputFile = 'example.png'
+  await page.screenshot({path: outputFile});
+  console.log('Screenshot taken to', outputFile);
 
   await browser.close();
 })();
