@@ -1,1 +1,1 @@
-FROM ghcr.io/anyfiddle/base
+FROM registry.anyfiddle.com/anyfiddle/base

@@ -1,4 +1,4 @@
-FROM ghcr.io/anyfiddle/base-ruby
+FROM registry.anyfiddle.com/anyfiddle/base-ruby
 
 USER root
 

@@ -1,4 +1,4 @@
-FROM ghcr.io/anyfiddle/base-elixir
+FROM registry.anyfiddle.com/anyfiddle/base-elixir
 
 USER anyfiddle
 

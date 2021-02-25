@@ -1,4 +1,4 @@
-FROM ghcr.io/anyfiddle/base
+FROM registry.anyfiddle.com/anyfiddle/base
 
 USER anyfiddle
 RUN curl -fsSL https://deno.land/x/install/install.sh | sh

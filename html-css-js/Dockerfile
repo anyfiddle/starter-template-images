@@ -1,4 +1,4 @@
-FROM ghcr.io/anyfiddle/base-nodejs
+FROM registry.anyfiddle.com/anyfiddle/base-nodejs
 
 USER root
 
