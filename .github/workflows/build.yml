@@ -16,9 +16,9 @@ jobs:
     - name: Build images
       uses: docker/build-push-action@v1
       with:
-        registry: ghcr.io
-        username: USERNAME
-        password: ${{ secrets.DOCKER_GITHUB_PASSWORD }}
+        registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+        username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+        password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
         repository: anyfiddle/base
         path: ./_base_images/base
         tags: latest
@@ -47,9 +47,9 @@ jobs:
     - name: Build images
       uses: docker/build-push-action@v1
       with:
-        registry: ghcr.io
-        username: USERNAME
-        password: ${{ secrets.DOCKER_GITHUB_PASSWORD }}
+        registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+        username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+        password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
         repository: anyfiddle/${{ matrix.template }}
         path: ./_base_images/${{ matrix.template }}
         tags: latest
@@ -98,9 +98,9 @@ jobs:
     - name: Build images
       uses: docker/build-push-action@v1
       with:
-        registry: ghcr.io
-        username: USERNAME
-        password: ${{ secrets.DOCKER_GITHUB_PASSWORD }}
+        registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+        username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+        password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
         repository: anyfiddle/${{ matrix.template }}
         path: ./${{ matrix.template }}
         tags: dev
@@ -123,17 +123,15 @@ jobs:
     - name: Webhook to update image in templates
       if: startsWith(github.ref, 'refs/tags/')
       shell: bash
-      env:
-        HOOK_SECRET: ${{ secrets.HOOK_SECRET }}
       run: |
         version="${GITHUB_REF/refs\/tags\//}"
-        image=ghcr.io/anyfiddle/${{ matrix.template }}:$version
+        image=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}/anyfiddle/${{ matrix.template }}:$version
         thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
         jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
 
         hookUrl="https://www.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
 
-        signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "$HOOK_SECRET" | sed 's/^.* //'`
+        signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "${{ secrets.HOOK_SECRET }}" | sed 's/^.* //'`
         curl --location --request POST "${hookUrl}" \
           --header "x-hook-signature: $signature" \
           --header 'Content-Type: application/json' \
