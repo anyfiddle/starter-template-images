@@ -1,4 +1,4 @@
-FROM anyfiddle/base-ruby
+FROM ghcr.io/anyfiddle/base-ruby
 
 USER root
 
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     tzdata \
     yarn \
     zlib1g-dev \
-	&& rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 RUN gem install rails
 USER anyfiddle

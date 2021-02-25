@@ -1,4 +1,4 @@
-FROM anyfiddle/base-rust
+FROM ghcr.io/anyfiddle/base-rust
 
 RUN cargo init
 

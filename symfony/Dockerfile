@@ -1,4 +1,4 @@
-FROM anyfiddle/base-php
+FROM ghcr.io/anyfiddle/base-php
 
 USER root
 RUN apt-get update && apt-get install -y \
@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
     php-mbstring \
     php-mysql \
     php-xml \
-	&& rm -rf /var/lib/apt/lists/*
-	
+    && rm -rf /var/lib/apt/lists/*
+
 RUN wget https://get.symfony.com/cli/installer -O - | bash /dev/stdin --install-dir=/usr/bin
 
 USER anyfiddle

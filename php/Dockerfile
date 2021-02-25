@@ -1,3 +1,3 @@
-FROM anyfiddle/base-php
+FROM ghcr.io/anyfiddle/base-php
 
 COPY --chown=anyfiddle ./workspace /home/anyfiddle/project

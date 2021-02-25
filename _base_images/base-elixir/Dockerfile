@@ -1,4 +1,4 @@
-FROM anyfiddle/base
+FROM ghcr.io/anyfiddle/base
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -8,7 +8,7 @@ RUN wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && \
 	rm erlang-solutions_2.0_all.deb
 
 RUN apt-get update && apt-get install -y \
-    elixir \
+	elixir \
 	esl-erlang \
 	&& rm -rf /var/lib/apt/lists/*
 

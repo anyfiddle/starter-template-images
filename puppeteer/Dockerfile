@@ -1,4 +1,4 @@
-FROM anyfiddle/base-nodejs
+FROM ghcr.io/anyfiddle/base-nodejs
 
 USER root
 
@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y \
     lsb-release \
     wget \
     xdg-utils \
-&& rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 
 USER anyfiddle
 COPY --chown=anyfiddle ./workspace /home/anyfiddle/project

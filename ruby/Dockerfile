@@ -1,3 +1,3 @@
-FROM anyfiddle/base-ruby
+FROM ghcr.io/anyfiddle/base-ruby
 
 COPY --chown=anyfiddle ./workspace /home/anyfiddle/project

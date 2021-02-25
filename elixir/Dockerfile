@@ -1,4 +1,4 @@
-FROM anyfiddle/base-elixir
+FROM ghcr.io/anyfiddle/base-elixir
 
 USER anyfiddle
 

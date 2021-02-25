@@ -1,4 +1,4 @@
-FROM anyfiddle/base
+FROM ghcr.io/anyfiddle/base
 
 USER root
 

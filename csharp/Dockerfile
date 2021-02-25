@@ -1,4 +1,4 @@
-FROM anyfiddle/base-csharp
+FROM ghcr.io/anyfiddle/base-csharp
 
 RUN dotnet new console -o .
 

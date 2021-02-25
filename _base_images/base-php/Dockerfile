@@ -1,4 +1,4 @@
-FROM anyfiddle/base
+FROM ghcr.io/anyfiddle/base
 
 USER root
 
@@ -11,6 +11,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 	php composer-setup.php --quiet --install-dir=/usr/bin --filename=composer && \
-    rm composer-setup.php
+	rm composer-setup.php
 
 USER anyfiddle

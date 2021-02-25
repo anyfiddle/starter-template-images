@@ -1,4 +1,4 @@
-FROM anyfiddle/base
+FROM ghcr.io/anyfiddle/base
 
 USER anyfiddle
 RUN curl -fsSL https://deno.land/x/install/install.sh | sh

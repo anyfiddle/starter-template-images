@@ -1,4 +1,4 @@
-FROM anyfiddle/base
+FROM ghcr.io/anyfiddle/base
 
 USER root
 
@@ -8,7 +8,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-p
 
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
-	dotnet-sdk-3.1 \
-	&& rm -rf /var/lib/apt/lists/*
+    dotnet-sdk-3.1 \
+    && rm -rf /var/lib/apt/lists/*
 
 USER anyfiddle
