@@ -13,19 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: docker/setup-buildx-action@v1
-      - name: Login to Docker registry
-        uses: docker/login-action@v1 
+      - name: Build images
+        uses: docker/build-push-action@v1
         with:
           registry: gcr.io
           username: _json_key
           password: ${{ secrets.GCR_KEY }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: ./_base_images/base
-          tags: gcr.io/anyfiddle-cloud/templates/base:latest
-          push: true
+          repository: anyfiddle-cloud/templates/base
+          path: ./_base_images/base
+          tags: latest
 
   build:
     name: Base
@@ -48,19 +44,15 @@ jobs:
         ]
     steps:
       - uses: actions/checkout@v2
-      - uses: docker/setup-buildx-action@v1
-      - name: Login to Docker registry
-        uses: docker/login-action@v1 
+      - name: Build images
+        uses: docker/build-push-action@v1
         with:
           registry: gcr.io
           username: _json_key
           password: ${{ secrets.GCR_KEY }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: ./_base_images/${{ matrix.template }}
-          tags: gcr.io/anyfiddle-cloud/templates/${{ matrix.template }}:latest
-          push: true
+          repository: anyfiddle-cloud/templates/${{ matrix.template }}
+          path: ./_base_images/${{ matrix.template }}
+          tags: latest
   
   build-starter-template-images:
     name: Templates
@@ -96,30 +88,22 @@ jobs:
           'slimphp',
           'spring',
           'symfony',
-          # 'ubuntu',
+          'ubuntu',
           'vuejs',
           'webpy'
         ]
     steps:
       - uses: actions/checkout@v2
-      - id: docker_meta
-        name: Docker add meta data
-        uses: crazy-max/ghaction-docker-meta@v1
-        with:
-          images: gcr.io/anyfiddle-cloud/templates/${{ matrix.template }}
-      - uses: docker/setup-buildx-action@v1
-      - name: Login to Docker registry
-        uses: docker/login-action@v1 
+      - name: Build images
+        uses: docker/build-push-action@v1
         with:
           registry: gcr.io
           username: _json_key
           password: ${{ secrets.GCR_KEY }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: ./${{ matrix.template }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          push: true
+          repository: anyfiddle-cloud/templates/${{ matrix.template }}
+          path: ./${{ matrix.template }}
+          tags: master
+          tag_with_ref: true
       
       - name: Setup AWS for S3
         uses: aws-actions/configure-aws-credentials@v1
