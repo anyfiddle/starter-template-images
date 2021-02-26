@@ -17,7 +17,7 @@ jobs:
       - name: Login to Docker registry
         uses: docker/login-action@v1 
         with:
-          registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+          registry: public.ecr.aws
           username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
         env:
