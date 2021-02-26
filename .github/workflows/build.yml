@@ -96,7 +96,7 @@ jobs:
           'slimphp',
           'spring',
           'symfony',
-          'ubuntu',
+          # 'ubuntu',
           'vuejs',
           'webpy'
         ]
