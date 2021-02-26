@@ -7,7 +7,6 @@ on:
     tags:
       - '*'
 
-
 jobs:
   build-base:
     name: Base OS
@@ -21,6 +20,8 @@ jobs:
           registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
           username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
+        env:
+          AWS_REGION: us-west-2
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
