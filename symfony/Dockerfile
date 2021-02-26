@@ -1,4 +1,4 @@
-FROM gcr.io/anyfiddle-cloud/base-php
+FROM gcr.io/anyfiddle-cloud/templates/base-php
 
 USER root
 RUN apt-get update && apt-get install -y \

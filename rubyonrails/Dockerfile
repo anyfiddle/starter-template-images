@@ -1,4 +1,4 @@
-FROM gcr.io/anyfiddle-cloud/base-ruby
+FROM gcr.io/anyfiddle-cloud/templates/base-ruby
 
 USER root
 

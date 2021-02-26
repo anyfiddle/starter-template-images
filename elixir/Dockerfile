@@ -1,4 +1,4 @@
-FROM gcr.io/anyfiddle-cloud/base-elixir
+FROM gcr.io/anyfiddle-cloud/templates/base-elixir
 
 USER anyfiddle
 

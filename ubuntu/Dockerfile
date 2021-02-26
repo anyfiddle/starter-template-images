@@ -1,1 +1,1 @@
-FROM gcr.io/anyfiddle-cloud/base
+FROM gcr.io/anyfiddle-cloud/templates/base

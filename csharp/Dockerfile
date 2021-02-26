@@ -1,4 +1,4 @@
-FROM gcr.io/anyfiddle-cloud/base-csharp
+FROM gcr.io/anyfiddle-cloud/templates/base-csharp
 
 RUN dotnet new console -o .
 

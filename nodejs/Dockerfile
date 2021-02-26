@@ -1,3 +1,3 @@
-FROM gcr.io/anyfiddle-cloud/base-nodejs
+FROM gcr.io/anyfiddle-cloud/templates/base-nodejs
 
 COPY --chown=anyfiddle ./workspace /home/anyfiddle/project

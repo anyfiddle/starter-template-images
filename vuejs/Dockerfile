@@ -1,4 +1,4 @@
-FROM gcr.io/anyfiddle-cloud/base-nodejs
+FROM gcr.io/anyfiddle-cloud/templates/base-nodejs
 
 RUN cd /home/anyfiddle && rm -rf project && npx @vue/cli create --default project
 COPY --chown=anyfiddle ./workspace/anyfiddle.json /home/anyfiddle/project/anyfiddle.json

@@ -1,4 +1,4 @@
-FROM gcr.io/anyfiddle-cloud/base-java
+FROM gcr.io/anyfiddle-cloud/templates/base-java
 
 COPY --chown=anyfiddle ./workspace /home/anyfiddle/project
 RUN ./mvnw install

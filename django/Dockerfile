@@ -1,4 +1,4 @@
-FROM gcr.io/anyfiddle-cloud/base-python3
+FROM gcr.io/anyfiddle-cloud/templates/base-python3
 
 ENV PATH="/home/anyfiddle/.local/bin:${PATH}"
 RUN pip3 install django

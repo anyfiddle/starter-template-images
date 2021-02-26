@@ -1,3 +1,3 @@
-FROM gcr.io/anyfiddle-cloud/base-golang
+FROM gcr.io/anyfiddle-cloud/templates/base-golang
 
 COPY --chown=anyfiddle ./workspace /home/anyfiddle/project

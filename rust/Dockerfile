@@ -1,4 +1,4 @@
-FROM gcr.io/anyfiddle-cloud/base-rust
+FROM gcr.io/anyfiddle-cloud/templates/base-rust
 
 RUN cargo init
 
