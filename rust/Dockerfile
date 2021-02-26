@@ -1,5 +1,4 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base-rust
+FROM gcr.io/anyfiddle-cloud/base-rust
 
 RUN cargo init
 

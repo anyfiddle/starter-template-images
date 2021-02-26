@@ -1,5 +1,4 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base-python3
+FROM gcr.io/anyfiddle-cloud/base-python3
 
 ENV PATH="/home/anyfiddle/.local/bin:${PATH}"
 RUN pip3 install django

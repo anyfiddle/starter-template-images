@@ -1,5 +1,4 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base
+FROM gcr.io/anyfiddle-cloud/base
 
 ARG DEBIAN_FRONTEND=noninteractive
 

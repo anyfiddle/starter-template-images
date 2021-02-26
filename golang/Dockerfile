@@ -1,4 +1,3 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base-golang
+FROM gcr.io/anyfiddle-cloud/base-golang
 
 COPY --chown=anyfiddle ./workspace /home/anyfiddle/project

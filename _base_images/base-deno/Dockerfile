@@ -1,5 +1,4 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base
+FROM gcr.io/anyfiddle-cloud/base
 
 USER anyfiddle
 RUN curl -fsSL https://deno.land/x/install/install.sh | sh
