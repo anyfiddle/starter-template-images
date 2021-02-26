@@ -24,8 +24,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./_base_images/base
-          tags: registry.anyfiddle.com/anyfiddle/base:latest
-          build-args: "REGISTRY=registry.anyfiddle.com"
+          tags: anyfiddle/base:latest
           push: true
 
   build:
