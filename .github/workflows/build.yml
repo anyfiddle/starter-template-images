@@ -24,7 +24,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./_base_images/base
-          tags: anyfiddle/base:latest
+          tags: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}/anyfiddle/base:latest
           build-args: "REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}"
           push: true
 
@@ -60,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./_base_images/${{ matrix.template }}
-          tags: anyfiddle/${{ matrix.template }}:latest
+          tags: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}/anyfiddle/${{ matrix.template }}:latest
           build-args: "REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}"
           push: true
   
