@@ -1,4 +1,5 @@
-FROM registry.anyfiddle.com/anyfiddle/base-rust
+ARG REGISTRY=registry.hub.docker.com
+FROM ${REGISTRY}/anyfiddle/base-rust
 
 RUN cargo init
 

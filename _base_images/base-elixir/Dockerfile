@@ -1,4 +1,5 @@
-FROM registry.anyfiddle.com/anyfiddle/base
+ARG REGISTRY=registry.hub.docker.com
+FROM ${REGISTRY}/anyfiddle/base
 
 ARG DEBIAN_FRONTEND=noninteractive
 

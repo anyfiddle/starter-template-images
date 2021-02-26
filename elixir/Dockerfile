@@ -1,4 +1,5 @@
-FROM registry.anyfiddle.com/anyfiddle/base-elixir
+ARG REGISTRY=registry.hub.docker.com
+FROM ${REGISTRY}/anyfiddle/base-elixir
 
 USER anyfiddle
 

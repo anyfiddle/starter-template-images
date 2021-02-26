@@ -1,4 +1,5 @@
-FROM registry.anyfiddle.com/anyfiddle/base-csharp
+ARG REGISTRY=registry.hub.docker.com
+FROM ${REGISTRY}/anyfiddle/base-csharp
 
 RUN dotnet new console -o .
 

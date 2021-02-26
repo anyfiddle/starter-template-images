@@ -12,16 +12,21 @@ jobs:
     name: Base OS
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build images
-      uses: docker/build-push-action@v1
-      with:
-        registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-        username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
-        password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
-        repository: anyfiddle/base
-        path: ./_base_images/base
-        tags: latest
+      - uses: actions/checkout@v2
+      - uses: docker/setup-buildx-action@v1
+      - name: Login to Docker registry
+        uses: docker/login-action@v1 
+        with:
+          registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+          username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./_base_images/base
+          tags: anyfiddle/base:latest
+          build-args: "REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}"
+          push: true
 
   build:
     name: Base
@@ -43,16 +48,21 @@ jobs:
           'base-rust'
         ]
     steps:
-    - uses: actions/checkout@v2
-    - name: Build images
-      uses: docker/build-push-action@v1
-      with:
-        registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-        username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
-        password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
-        repository: anyfiddle/${{ matrix.template }}
-        path: ./_base_images/${{ matrix.template }}
-        tags: latest
+      - uses: actions/checkout@v2
+      - uses: docker/setup-buildx-action@v1
+      - name: Login to Docker registry
+        uses: docker/login-action@v1 
+        with:
+          registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+          username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./_base_images/${{ matrix.template }}
+          tags: anyfiddle/${{ matrix.template }}:latest
+          build-args: "REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}"
+          push: true
   
   build-starter-template-images:
     name: Templates
@@ -93,46 +103,54 @@ jobs:
           'webpy'
         ]
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - id: docker_meta
+        name: Docker add meta data
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: anyfiddle/${{ matrix.template }}
+      - uses: docker/setup-buildx-action@v1
+      - name: Login to Docker registry
+        uses: docker/login-action@v1 
+        with:
+          registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+          username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ./${{ matrix.template }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          build-args: "REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}"
+          push: true
+      
+      - name: Setup AWS for S3
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
     
-    - name: Build images
-      uses: docker/build-push-action@v1
-      with:
-        registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-        username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
-        password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
-        repository: anyfiddle/${{ matrix.template }}
-        path: ./${{ matrix.template }}
-        tags: dev
-        tag_with_ref: true
+      - name: Upload thumbnail
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          src="${{ matrix.template }}/thumbnail.png"
+          dest="s3://anyfiddle-templates-thumbnails/${{ matrix.template }}.png"
+          aws s3 cp "$src" "${dest}"
 
-    - name: Setup AWS for S3
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2
-   
-    - name: Upload thumbnail
-      if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        src="${{ matrix.template }}/thumbnail.png"
-        dest="s3://anyfiddle-templates-thumbnails/${{ matrix.template }}.png"
-        aws s3 cp "$src" "${dest}"
+      - name: Webhook to update image in templates
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        run: |
+          version="${GITHUB_REF/refs\/tags\//}"
+          image=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}/anyfiddle/${{ matrix.template }}:$version
+          thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
+          jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
 
-    - name: Webhook to update image in templates
-      if: startsWith(github.ref, 'refs/tags/')
-      shell: bash
-      run: |
-        version="${GITHUB_REF/refs\/tags\//}"
-        image=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}/anyfiddle/${{ matrix.template }}:$version
-        thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
-        jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
+          hookUrl="https://www.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
 
-        hookUrl="https://www.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
-
-        signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "${{ secrets.HOOK_SECRET }}" | sed 's/^.* //'`
-        curl --location --request POST "${hookUrl}" \
-          --header "x-hook-signature: $signature" \
-          --header 'Content-Type: application/json' \
-          --data-raw "$jsonToPost"
+          signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "${{ secrets.HOOK_SECRET }}" | sed 's/^.* //'`
+          curl --location --request POST "${hookUrl}" \
+            --header "x-hook-signature: $signature" \
+            --header 'Content-Type: application/json' \
+            --data-raw "$jsonToPost"
