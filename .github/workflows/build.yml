@@ -16,10 +16,11 @@ jobs:
       - name: Build images
         uses: docker/build-push-action@v1
         with:
-          registry: gcr.io
-          username: _json_key
-          password: ${{ secrets.GCR_KEY }}
+          registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+          username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
           repository: anyfiddle-cloud/templates/base
+          build_args: REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
           path: ./_base_images/base
           tags: latest
 
@@ -47,10 +48,11 @@ jobs:
       - name: Build images
         uses: docker/build-push-action@v1
         with:
-          registry: gcr.io
-          username: _json_key
-          password: ${{ secrets.GCR_KEY }}
+          registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+          username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
           repository: anyfiddle-cloud/templates/${{ matrix.template }}
+          build_args: REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
           path: ./_base_images/${{ matrix.template }}
           tags: latest
   
@@ -97,10 +99,11 @@ jobs:
       - name: Build images
         uses: docker/build-push-action@v1
         with:
-          registry: gcr.io
-          username: _json_key
-          password: ${{ secrets.GCR_KEY }}
+          registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
+          username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
           repository: anyfiddle-cloud/templates/${{ matrix.template }}
+          build_args: REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
           path: ./${{ matrix.template }}
           tags: master
           tag_with_ref: true
@@ -124,7 +127,7 @@ jobs:
         shell: bash
         run: |
           version="${GITHUB_REF/refs\/tags\//}"
-          image=gcr.io/anyfiddle-cloud/templates/${{ matrix.template }}:$version
+          image=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}/anyfiddle-cloud/templates/${{ matrix.template }}:$version
           thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
           jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
 

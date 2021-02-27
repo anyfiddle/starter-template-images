@@ -1,4 +1,5 @@
-FROM gcr.io/anyfiddle-cloud/templates/base-php
+ARG REGISTRY=registry.hub.docker.com
+FROM ${REGISTRY}/anyfiddle/base-php
 
 USER root
 RUN apt-get update && apt-get install -y \
