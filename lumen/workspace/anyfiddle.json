@@ -3,5 +3,7 @@
       "routes/web.php"
   ],
   "defaultCommand": "php -S 0.0.0.0:8080 -t public",
-  "port": 8080
+  "port": 8080,
+  "preview": true,
+  "autorun": true
 }

@@ -4,5 +4,7 @@
       "src/App.css"
   ],
   "port": 3000,
-  "defaultCommand": "npm start"
+  "defaultCommand": "npm start",
+  "preview": true,
+  "autorun": true
 }

@@ -4,5 +4,7 @@
       "src/App.vue"
   ],
   "defaultCommand": "yarn serve",
-  "port": 8080
+  "port": 8080,
+  "preview": true,
+  "autorun": true
 }

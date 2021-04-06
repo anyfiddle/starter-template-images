@@ -3,5 +3,8 @@
       "main.go"
   ],
   "defaultCommand": "go run main.go",
-  "port": 8080
+  "port": 8080,
+  "preview": true,
+  "autorun": true,
+  "autoReload": true
 }
