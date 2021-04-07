@@ -4,7 +4,5 @@
   ],
   "defaultCommand": "./mvnw spring-boot:run",
   "port": 8080,
-  "preview": true,
-  "autorun": true,
-  "autoReload": true
+  "autorun": true
 }

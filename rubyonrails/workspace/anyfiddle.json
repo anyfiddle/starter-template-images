@@ -6,6 +6,5 @@
   "defaultCommand": "rails server -b 0.0.0.0",
   "port": 3000,
   "preview": true,
-  "autorun": true,
-  "autoReload": true
+  "autorun": true
 }

@@ -6,6 +6,5 @@
   "defaultCommand": "symfony server:start --no-tls",
   "port": 8000,
   "preview": true,
-  "autorun": true,
-  "autoReload": true
+  "autorun": true
 }
