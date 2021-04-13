@@ -61,6 +61,6 @@ Rails.application.configure do
     config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
     # Allow anyfiddle run domain to access the server
-    config.hosts << /.*\.anyfiddle\.run/
+    config.hosts << /.*/
   end
   
