@@ -9,7 +9,7 @@ RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-p
 
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
-    dotnet-sdk-3.1 \
+    dotnet-sdk-5.0 \
     && rm -rf /var/lib/apt/lists/*
 
 USER anyfiddle
