@@ -28,7 +28,6 @@ jobs:
           push: true
           tags: ghcr.io/anyfiddle/templates/base:latest
           context: ./_base_images/base
-          build-args: REGISTRY=ghcr.io
 
   build:
     name: Base
@@ -66,7 +65,6 @@ jobs:
           push: true
           tags: ghcr.io/anyfiddle/templates/${{ matrix.template }}:latest
           context: ./_base_images/${{ matrix.template }}
-          build-args: REGISTRY=ghcr.io
   
   # build-starter-template-images:
   #   name: Templates
