@@ -1,4 +1,3 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base-java
+FROM ghcr.io/anyfiddle/templates/base-java
 
 COPY --chown=anyfiddle ./workspace /home/anyfiddle/project

@@ -1,5 +1,4 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base-elixir
+FROM ghcr.io/anyfiddle/templates/base-elixir
 
 USER anyfiddle
 

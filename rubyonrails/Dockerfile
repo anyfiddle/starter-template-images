@@ -1,5 +1,4 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base-ruby
+FROM ghcr.io/anyfiddle/templates/base-ruby
 
 USER root
 

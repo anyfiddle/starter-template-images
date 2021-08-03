@@ -1,5 +1,4 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base-csharp
+FROM ghcr.io/anyfiddle/templates/base-csharp
 
 RUN dotnet new console -o .
 

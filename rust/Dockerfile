@@ -1,5 +1,4 @@
-ARG REGISTRY=registry.hub.docker.com
-FROM ${REGISTRY}/anyfiddle/base-rust
+FROM ghcr.io/anyfiddle/templates/base-rust
 
 RUN cargo init
 
