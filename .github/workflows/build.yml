@@ -12,20 +12,16 @@ jobs:
     name: Base OS
     runs-on: ubuntu-latest
     steps:
-      - 
-        uses: actions/checkout@v2
-      -
-        name: Set up Docker Buildx
+      - uses: actions/checkout@v2
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      -
-        name: Login to GitHub Container Registry
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v1 
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      -
-        name: Build and push
+      - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
@@ -34,53 +30,43 @@ jobs:
           context: ./_base_images/base
           build-args: REGISTRY=ghcr.io
       
-  # build-base:
-  #   name: Base OS
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Build images
-  #       uses: docker/build-push-action@v1
-  #       with:
-  #         registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-  #         username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
-  #         password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
-  #         repository: anyfiddle/base
-  #         build_args: REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-  #         path: ./_base_images/base
-  #         tags: latest
-
-  # build:
-  #   name: Base
-  #   needs: build-base
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       template: [
-  #         'base-csharp',
-  #         'base-deno',
-  #         'base-elixir',
-  #         'base-golang',
-  #         'base-java',
-  #         'base-nodejs',
-  #         'base-php',
-  #         'base-python2',
-  #         'base-python3',
-  #         'base-ruby',
-  #         'base-rust'
-  #       ]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Build images
-  #       uses: docker/build-push-action@v1
-  #       with:
-  #         registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-  #         username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
-  #         password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
-  #         repository: anyfiddle/${{ matrix.template }}
-  #         build_args: REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-  #         path: ./_base_images/${{ matrix.template }}
-  #         tags: latest
+  build:
+    name: Base
+    needs: build-base
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        template: [
+          'base-csharp',
+          'base-deno',
+          'base-elixir',
+          'base-golang',
+          'base-java',
+          'base-nodejs',
+          'base-php',
+          'base-python2',
+          'base-python3',
+          'base-ruby',
+          'base-rust'
+        ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ghcr.io/anyfiddle/${{ matrix.template }}:latest
+          context: ./_base_images/${{ matrix.template }}
+          build-args: REGISTRY=ghcr.io
   
   # build-starter-template-images:
   #   name: Templates
