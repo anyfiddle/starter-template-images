@@ -1,0 +1,10 @@
+{
+  "openFiles": [
+      "pages/index.js",
+      "styles/Home.module.css"
+  ],
+  "port": 3000,
+  "defaultCommand": "yarn dev",
+  "preview": true,
+  "autorun": true
+}

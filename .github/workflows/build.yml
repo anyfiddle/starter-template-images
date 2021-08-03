@@ -98,6 +98,8 @@ jobs:
           'jekyll',
           'laravel',
           'lumen',
+          'nextjs',
+          'nextjs-typescript',
           'nodejs',
           'nodejs-express',
           'php',

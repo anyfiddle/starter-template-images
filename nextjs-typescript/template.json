@@ -1,0 +1,16 @@
+{
+  "id": "nextjs-typescript",
+  "name": "NextJS (Typescript)",
+  "description": "NextJS based React app with Typescript NodeJS",
+  "tags": [
+    "nodejs",
+    "npm",
+    "yarn",
+    "reactjs",
+    "nextjs",
+    "javascript",
+    "typescript",
+    "jamstack",
+    "server side rendering"
+  ]
+}

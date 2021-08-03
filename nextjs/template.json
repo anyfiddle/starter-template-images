@@ -1,0 +1,15 @@
+{
+  "id": "nextjs",
+  "name": "NextJS",
+  "description": "NextJS based React app with NodeJS",
+  "tags": [
+    "nodejs",
+    "npm",
+    "yarn",
+    "reactjs",
+    "nextjs",
+    "javascript",
+    "jamstack",
+    "server side rendering"
+  ]
+}
