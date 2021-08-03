@@ -1,0 +1,12 @@
+{
+  "id": "docusaurus",
+  "name": "Docusaurus",
+  "description": "Docusaurus, create docs with ReactJS",
+  "tags": [
+    "nodejs",
+    "reactjs",
+    "react",
+    "docs",
+    "documentation"
+  ]
+}

@@ -87,6 +87,7 @@ jobs:
           'cpp',
           'csharp',
           'deno',
+          'docusaurus',
           'django',
           'elixir',
           'flask',

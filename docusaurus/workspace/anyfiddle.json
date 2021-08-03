@@ -1,0 +1,10 @@
+{
+  "openFiles": [
+      "src/components/HomepageFeatures.js",
+      "src/pages/index.js"
+  ],
+  "port": 3000,
+  "defaultCommand": "yarn serve",
+  "preview": true,
+  "autorun": true
+}
