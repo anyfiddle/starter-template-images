@@ -32,7 +32,7 @@ jobs:
           push: true
           tags: ghcr.io/anyfiddle/base:latest
           context: ./_base_images/base
-          build_args: REGISTRY=ghcr.io
+          build-args: REGISTRY=ghcr.io
         
           
   # build-base:
