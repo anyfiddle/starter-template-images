@@ -81,6 +81,7 @@ jobs:
     strategy:
       matrix:
         template: [
+          '11ty',
           'angular',
           'clang',
           'cpp',

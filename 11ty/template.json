@@ -1,0 +1,11 @@
+{
+  "id": "11ty",
+  "name": "11ty",
+  "description": "11ty static site generator with NodeJS",
+  "tags": [
+    "11ty",
+    "nodejs",
+    "jamstack",
+    "static site generator"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "openFiles": [
+      "index.md",
+      "_includes/layout.njk"
+  ],
+  "defaultCommand": "npx @11ty/eleventy --serve",
+  "preview": true,
+  "autorun": true
+}
