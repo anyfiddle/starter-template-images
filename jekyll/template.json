@@ -1,0 +1,11 @@
+{
+  "id": "jekyll",
+  "name": "Jekyll",
+  "description": "Jekyll, static site generator with Ruby",
+  "tags": [
+    "ruby",
+    "gem",
+    "jekyll",
+    "static site generator"
+  ]
+}

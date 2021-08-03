@@ -95,6 +95,7 @@ jobs:
           'golang',
           'html-css-js',
           'java',
+          'jekyll',
           'laravel',
           'lumen',
           'nodejs',

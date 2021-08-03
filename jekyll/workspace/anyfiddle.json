@@ -1,0 +1,12 @@
+{
+  "openFiles": [
+      "index.markdown"
+  ],
+  "openDirectories": [
+    "_posts"
+  ],
+  "port": 4000,
+  "defaultCommand": "bundle exec jekyll serve --host 0.0.0.0",
+  "preview": true,
+  "autorun": true
+}
