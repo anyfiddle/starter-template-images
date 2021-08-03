@@ -1,0 +1,12 @@
+{
+  "id": "gatsby",
+  "name": "Gatsby",
+  "description": "Gatsby, site generator based on ReactJS",
+  "tags": [
+    "nodejs",
+    "reactjs",
+    "gatsby",
+    "javascript",
+    "jamstack"
+  ]
+}

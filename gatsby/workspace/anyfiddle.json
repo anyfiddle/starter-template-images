@@ -1,0 +1,9 @@
+{
+  "openFiles": [
+      "src/pages/index.js"
+  ],
+  "port": 8000,
+  "defaultCommand": "npm run develop -- --host=0.0.0.0",
+  "preview": true,
+  "autorun": true
+}
