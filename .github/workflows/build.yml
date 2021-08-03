@@ -12,16 +12,20 @@ jobs:
     name: Base OS
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Docker Buildx
+      - 
+        uses: actions/checkout@v2
+      - 
+        name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      - name: Login to GitHub Container Registry
+      - 
+        name: Login to GitHub Container Registry
         uses: docker/login-action@v1 
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push
+      - 
+        name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
@@ -49,16 +53,20 @@ jobs:
           'base-rust'
         ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Docker Buildx
+      - 
+        uses: actions/checkout@v2
+      - 
+        name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      - name: Login to GitHub Container Registry
+      - 
+        name: Login to GitHub Container Registry
         uses: docker/login-action@v1 
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push
+      - 
+        name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
@@ -66,85 +74,100 @@ jobs:
           tags: ghcr.io/anyfiddle/templates/${{ matrix.template }}:latest
           context: ./_base_images/${{ matrix.template }}
   
-  # build-starter-template-images:
-  #   name: Templates
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       template: [
-  #         'angular',
-  #         'clang',
-  #         'cpp',
-  #         'csharp',
-  #         'deno',
-  #         'django',
-  #         'elixir',
-  #         'flask',
-  #         'gin',
-  #         'golang',
-  #         'html-css-js',
-  #         'java',
-  #         'laravel',
-  #         'lumen',
-  #         'nodejs',
-  #         'nodejs-express',
-  #         'php',
-  #         'puppeteer',
-  #         'python2',
-  #         'python3',
-  #         'reactjs',
-  #         'ruby',
-  #         'rubyonrails',
-  #         'rust',
-  #         'slimphp',
-  #         'spring',
-  #         'symfony',
-  #         'ubuntu',
-  #         'vuejs',
-  #         'webpy'
-  #       ]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Build images
-  #       uses: docker/build-push-action@v1
-  #       with:
-  #         registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-  #         username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
-  #         password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
-  #         repository: anyfiddle/${{ matrix.template }}
-  #         build_args: REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-  #         path: ./${{ matrix.template }}
-  #         tags: master
-  #         tag_with_ref: true
-      
-  #     - name: Setup AWS for S3
-  #       uses: aws-actions/configure-aws-credentials@v1
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         aws-region: us-west-2
-    
-  #     - name: Upload thumbnail
-  #       if: startsWith(github.ref, 'refs/tags/')
-  #       run: |
-  #         src="${{ matrix.template }}/thumbnail.png"
-  #         dest="s3://anyfiddle-templates-thumbnails/${{ matrix.template }}.png"
-  #         aws s3 cp "$src" "${dest}"
+  build-starter-template-images:
+    name: Templates
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        template: [
+          'angular',
+          'clang',
+          'cpp',
+          'csharp',
+          'deno',
+          'django',
+          'elixir',
+          'flask',
+          'gin',
+          'golang',
+          'html-css-js',
+          'java',
+          'laravel',
+          'lumen',
+          'nodejs',
+          'nodejs-express',
+          'php',
+          'puppeteer',
+          'python2',
+          'python3',
+          'reactjs',
+          'ruby',
+          'rubyonrails',
+          'rust',
+          'slimphp',
+          'spring',
+          'symfony',
+          'ubuntu',
+          'vuejs',
+          'webpy'
+        ]
+    steps:
+      - 
+        uses: actions/checkout@v2
+      - 
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/anyfiddle/templates/${{ matrix.template }}
+      - 
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - 
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1 
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - 
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          context: ./${{ matrix.template }}
+      - 
+        name: Setup AWS for S3
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      - 
+        name: Upload thumbnail
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          src="${{ matrix.template }}/thumbnail.png"
+          dest="s3://anyfiddle-templates-thumbnails/${{ matrix.template }}.png"
+          aws s3 cp "$src" "${dest}"
+      - 
+        name: Webhook to update image in templates
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        run: |
+          version="${GITHUB_REF/refs\/tags\//}"
+          image=ghcr.io/anyfiddle/templates/${{ matrix.template }}:$version
+          thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
+          jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
 
-  #     - name: Webhook to update image in templates
-  #       if: startsWith(github.ref, 'refs/tags/')
-  #       shell: bash
-  #       run: |
-  #         version="${GITHUB_REF/refs\/tags\//}"
-  #         image=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}/anyfiddle/${{ matrix.template }}:$version
-  #         thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
-  #         jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
+          hookUrl="https://www.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
 
-  #         hookUrl="https://www.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
-
-  #         signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "${{ secrets.HOOK_SECRET }}" | sed 's/^.* //'`
-  #         curl --location --request POST "${hookUrl}" \
-  #           --header "x-hook-signature: $signature" \
-  #           --header 'Content-Type: application/json' \
-  #           --data-raw "$jsonToPost"
+          signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "${{ secrets.HOOK_SECRET }}" | sed 's/^.* //'`
+          curl --location --request POST "${hookUrl}" \
+            --header "x-hook-signature: $signature" \
+            --header 'Content-Type: application/json' \
+            --data-raw "$jsonToPost"
