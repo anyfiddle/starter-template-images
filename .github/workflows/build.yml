@@ -27,10 +27,10 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./_base_images/base
-          build-args: REGISTRY=ghcr.io
           push: true
           tags: ghcr.io/anyfiddle/base:latest
+          context: ./_base_images/base
+          build-args: REGISTRY=ghcr.io
       
   # build-base:
   #   name: Base OS
