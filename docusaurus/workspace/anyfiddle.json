@@ -4,7 +4,7 @@
       "src/pages/index.js"
   ],
   "port": 3000,
-  "defaultCommand": "yarn serve",
+  "defaultCommand": "yarn start --host 0.0.0.0",
   "preview": true,
   "autorun": true
 }
