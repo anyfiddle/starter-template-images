@@ -12,7 +12,8 @@ jobs:
     name: Base OS
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - 
+        uses: actions/checkout@v2
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -31,16 +32,8 @@ jobs:
           push: true
           tags: anyfiddle/base:latest
           context: ./_base_images/base
-          build_args: REGISTRY=${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-          
-      - name: Build images
-        uses: docker/build-push-action@v1
-        with:
-          registry: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY }}
-          username: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_USERNAME }}
-          password: ${{ secrets.ANYFIDDLE_DOCKER_REGISTRY_PASSWORD }}
-          repository: anyfiddle/base
           build_args: REGISTRY=ghcr.io
+        
           
   # build-base:
   #   name: Base OS
