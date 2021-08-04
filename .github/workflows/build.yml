@@ -91,6 +91,7 @@ jobs:
           'django',
           'elixir',
           'flask',
+          'gatsby',
           'gin',
           'golang',
           'html-css-js',
