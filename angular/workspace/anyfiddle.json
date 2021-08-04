@@ -4,7 +4,7 @@
       "src/app/app.component.html",
       "src/app/app.component.css"
   ],
-  "defaultCommand": "ng serve --host 0.0.0.0 --allowedHosts .anyfiddle.run",
+  "defaultCommand": "ng serve --host 0.0.0.0 --allowed-hosts .anyfiddle.run --disable-host-check",
   "port": 4200,
   "preview": true,
   "autorun": true
