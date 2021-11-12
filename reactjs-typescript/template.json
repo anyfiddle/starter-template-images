@@ -1,0 +1,13 @@
+{
+  "id": "reactjs-typescript",
+  "name": "ReactJS (Typescript)",
+  "description": "React app using Vite and Typescript",
+  "tags": [
+    "nodejs",
+    "npm",
+    "yarn",
+    "reactjs",
+    "react",
+    "typescript"
+  ]
+}

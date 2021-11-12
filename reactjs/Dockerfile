@@ -1,4 +1,7 @@
 FROM ghcr.io/anyfiddle/templates/base-nodejs
 
-RUN npx create-react-app .
+RUN cd .. \
+    && npm init vite@latest project --template react \
+    && cd project \
+    && npm install
 COPY --chown=anyfiddle ./workspace/anyfiddle.json /home/anyfiddle/project/anyfiddle.json

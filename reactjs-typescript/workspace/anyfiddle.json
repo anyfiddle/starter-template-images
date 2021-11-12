@@ -1,6 +1,6 @@
 {
   "openFiles": [
-      "src/App.jsx",
+      "src/App.tsx",
       "src/App.css"
   ],
   "defaultCommand": "npm run dev -- --host 0.0.0.0",

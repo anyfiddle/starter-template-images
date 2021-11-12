@@ -1,7 +1,7 @@
 {
   "id": "reactjs",
   "name": "ReactJS",
-  "description": "React bootstrapped using create react app",
+  "description": "React app using Vite",
   "tags": [
     "nodejs",
     "npm",

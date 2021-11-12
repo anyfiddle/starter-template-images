@@ -1,0 +1,13 @@
+{
+  "id": "sveltejs",
+  "name": "Svelte",
+  "description": "Svelte app using Vite and Typescript",
+  "tags": [
+    "nodejs",
+    "npm",
+    "yarn",
+    "sveltejs",
+    "svelte",
+    "typescript"
+  ]
+}

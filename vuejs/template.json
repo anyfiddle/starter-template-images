@@ -1,7 +1,7 @@
 {
   "id": "vuejs",
   "name": "VueJS",
-  "description": "VueJS bootstrapped using vue cli",
+  "description": "VueJS using Vite",
   "tags": [
     "nodejs",
     "npm",

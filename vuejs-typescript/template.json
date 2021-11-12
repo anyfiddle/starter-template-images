@@ -1,0 +1,13 @@
+{
+  "id": "vuejs-typescript",
+  "name": "VueJS (Typescript)",
+  "description": "VueJS app using Vite and Typescript",
+  "tags": [
+    "nodejs",
+    "npm",
+    "yarn",
+    "vue",
+    "vuejs",
+    "typescript"
+  ]
+}
