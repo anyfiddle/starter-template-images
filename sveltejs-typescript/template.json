@@ -1,6 +1,6 @@
 {
   "id": "sveltejs-typescript",
-  "name": "Svelte",
+  "name": "Svelte (Typescript)",
   "description": "Svelte app using Vite and Typescript",
   "tags": [
     "nodejs",
