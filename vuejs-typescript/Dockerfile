@@ -5,3 +5,4 @@ RUN cd .. \
     && cd project \
     && npm install
 COPY --chown=anyfiddle ./workspace/anyfiddle.json /home/anyfiddle/project/anyfiddle.json
+COPY --chown=anyfiddle ./workspace/vite.config.js /home/anyfiddle/project/vite.config.js
