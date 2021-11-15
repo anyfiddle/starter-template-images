@@ -108,14 +108,18 @@ jobs:
           'python2',
           'python3',
           'reactjs',
+          'reactjs-typescript',
           'ruby',
           'rubyonrails',
           'rust',
           'slimphp',
           'spring',
+          'sveltejs',
+          'sveltejs-typescript',
           'symfony',
           'ubuntu',
           'vuejs',
+          'vuejs-typescript',
           'webpy'
         ]
     steps:
