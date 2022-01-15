@@ -149,35 +149,35 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           context: ./${{ matrix.template }}
-      - 
-        name: Setup AWS for S3
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
-      - 
-        name: Upload thumbnail
-        if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          src="${{ matrix.template }}/thumbnail.png"
-          dest="s3://anyfiddle-templates-thumbnails/${{ matrix.template }}.png"
-          aws s3 cp "$src" "${dest}"
-      - 
-        name: Webhook to update image in templates
-        if: startsWith(github.ref, 'refs/tags/')
-        shell: bash
-        run: |
-          version="${GITHUB_REF/refs\/tags\//}"
-          image=ghcr.io/anyfiddle/templates/${{ matrix.template }}:$version
-          thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
-          jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
+      # - 
+      #   name: Setup AWS for S3
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: us-west-2
+      # - 
+      #   name: Upload thumbnail
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   run: |
+      #     src="${{ matrix.template }}/thumbnail.png"
+      #     dest="s3://anyfiddle-templates-thumbnails/${{ matrix.template }}.png"
+      #     aws s3 cp "$src" "${dest}"
+      # - 
+      #   name: Webhook to update image in templates
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   shell: bash
+      #   run: |
+      #     version="${GITHUB_REF/refs\/tags\//}"
+      #     image=ghcr.io/anyfiddle/templates/${{ matrix.template }}:$version
+      #     thumbnail="https://anyfiddle-templates-thumbnails.s3-us-west-2.amazonaws.com/${{ matrix.template }}.png?v=$version"
+      #     jsonToPost=`jq -Sc ".image = "\""$image"\"" | .thumbnail="\""$thumbnail"\""" ${{ matrix.template }}/template.json`
 
-          hookUrl="https://api.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
+      #     hookUrl="https://api.anyfiddle.com/api/hooks/template-update/${{ matrix.template }}"
 
-          signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "${{ secrets.HOOK_SECRET }}" | sed 's/^.* //'`
-          curl --location --request POST "${hookUrl}" \
-            --header "x-hook-signature: $signature" \
-            --header 'Content-Type: application/json' \
-            --data-raw "$jsonToPost"
+      #     signature=`echo -n "$jsonToPost" | openssl dgst -sha1 -hmac "${{ secrets.HOOK_SECRET }}" | sed 's/^.* //'`
+      #     curl --location --request POST "${hookUrl}" \
+      #       --header "x-hook-signature: $signature" \
+      #       --header 'Content-Type: application/json' \
+      #       --data-raw "$jsonToPost"
